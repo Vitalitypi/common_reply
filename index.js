@@ -37,7 +37,7 @@ app.get("/", async (req, res) => {
 });
 // 创建路由获取test表的name字段
 app.get('/test', (req, res) => {
-  connection.query('SELECT name FROM test', (error, results, fields) => {
+  connection.query('SELECT * FROM test', (error, results, fields) => {
     if (error) {
       console.error('Error querying database: ' + error.stack);
       res.status(500).send('Error querying database');
