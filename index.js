@@ -42,13 +42,6 @@ app.all('/', async (req, res) => {
   const appid = req.headers['x-wx-from-appid'] || ''
   const { ToUserName, FromUserName, MsgType, Content, CreateTime } = req.body
   console.log('推送接收的账号', ToUserName, '来自于', FromUserName, 'appid', appid)
-  res.send({
-    ToUserName: FromUserName,
-    FromUserName: ToUserName,
-    CreateTime: CreateTime,
-    MsgType: 'text',
-    Content: '正在搜索中，稍安勿躁...'
-  })
   if (MsgType === 'text') {
     let ans = await yiso({FromUserName:FromUserName,ToUserName:ToUserName},Content,1,0,token,JSESSIONID)
     console.log(ans)
